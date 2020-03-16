@@ -4,7 +4,7 @@
 // *person
 // create a type human interface
 // to implicitly implement the interface, a human must have the speak method
-// create func “saySomething”
+// create func “say Something
 // have it take in a human as a parameter
 // have it call the speak method
 // show the following in your code
@@ -21,17 +21,21 @@ type person struct {
 }
 
 func (p *person) speak() {
-	fmt.Println("I Can speak", &p)
-}
-
-func saySomething(h human) {
-	h.speak()
+	fmt.Printf("%s %s can speak", *&p.First, *&p.Last)
 }
 
 type human interface {
 	speak()
 }
 
-func main() {
+func saySomething(h human) {
+	h.speak()
+}
 
+func main() {
+	p := person{
+		"John",
+		"Doe",
+	}
+	saySomething(&p)
 }
