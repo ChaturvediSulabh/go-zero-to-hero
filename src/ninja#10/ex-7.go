@@ -7,19 +7,14 @@ package main
 
 import (
 	"fmt"
-	"sync"
 )
 
 func main() {
 	c := make(chan int)
 	defer receive(c)
-	var wg sync.WaitGroup
 	for i := 0; i < 10; i++ {
-		wg.Add(1)
 		send(c)
-		wg.Done()
 	}
-	wg.Wait()
 }
 
 func send(c chan int) <-chan int {
